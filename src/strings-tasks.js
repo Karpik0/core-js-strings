@@ -184,7 +184,7 @@ function removeLastOccurrences(str, value) {
  */
 function sumOfCodes(str) {
   if (str === null || str === undefined) return 0;
-  return str.split('').reduce((st, el) => st + el.charCodeAt(), 0);
+  return str.split('').reduce((st, el) => el.charCodeAt(0) + st, 0);
 }
 
 /**
@@ -464,7 +464,7 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-  return str.replace(/[a-zA-Z]/g, function (char) {
+  return str.replace(/[a-zA-Z]/g, (char) => {
     const base = char <= 'Z' ? 65 : 97;
     return String.fromCharCode(((char.charCodeAt(0) - base + 13) % 26) + base);
   });
